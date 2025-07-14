@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import requests
 
-from backend.modelo import create_tables, get_db, FavoritePokemon
-from backend.esquema import FavoritePokemonCreate, FavoritePokemon
+from modelo import create_tables, get_db, FavoritePokemon
+from esquema import FavoritePokemonCreate, FavoritePokemon
 
 app = FastAPI()
 
