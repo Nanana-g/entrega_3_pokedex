@@ -1,4 +1,4 @@
-#Entrega del proyecto 3
+# Entrega del proyecto 3
 
 Estudiantes:
 Ariana Víquez
@@ -49,7 +49,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 
-##Cómo ejecutar la aplicación
+## 
+Cómo ejecutar la aplicación
 1. **Levanta el backend (API con FastAPI)**
 Desde la carpeta backend:
 
@@ -72,7 +73,7 @@ Ve a http://localhost:8080 para usar la app.
 El backend debe estar corriendo para que la app funcione correctamente.
 
 
-Estructura del proyecto
+**Estructura del proyecto**
 entrega_3_pokedex/
 │
 ├── backend/
