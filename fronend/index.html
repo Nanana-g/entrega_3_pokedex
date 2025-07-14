@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Pokémon App</h1>
+    <section id="pokeapi-section">
+        <h2>Pokémon de la PokeAPI</h2>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Buscar por nombre o ID">
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="pokeapi-list"></div>
+    </section>
+
+    <section id="favorites-section">
+        <h2>Mis Pokémon Favoritos</h2>
+        <form id="favorite-form">
+            <input type="text" id="fav-name" placeholder="Nombre del Pokémon" required>
+            <input type="number" id="fav-id" placeholder="ID del Pokémon" required>
+            <input type="text" id="trainer-name" placeholder="Tu nombre" required>
+            <input type="text" id="fav-image" placeholder="URL de imagen (opcional)">
+            <textarea id="fav-reason" placeholder="¿Por qué es tu favorito?"></textarea>
+            <button type="submit">Agregar a Favoritos</button>
+        </form>
+        <div id="favorites-list"></div>
+    </section>
+    <script src="js/app.js"></script>
+</body>
+</html>
