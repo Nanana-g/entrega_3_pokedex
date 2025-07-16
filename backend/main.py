@@ -8,7 +8,7 @@ from esquema import FavoritePokemonCreate, FavoritePokemon
 
 app = FastAPI()
 
-# Permitir CORS para el frontend local
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Cambia esto en producción
@@ -17,10 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Crear tablas al iniciar
 create_tables()
 
-# Endpoint para obtener pokémon de la PokeAPI (API externa)
+#endpoint
 @app.get("/api/pokemon/")
 def get_pokemon_list(limit: int = 20, offset: int = 0):
     url = f"https://pokeapi.co/api/v2/pokemon?limit={limit}&offset={offset}"
@@ -29,7 +28,7 @@ def get_pokemon_list(limit: int = 20, offset: int = 0):
         raise HTTPException(status_code=500, detail="Error al obtener datos de PokeAPI")
     return response.json()
 
-# Endpoint para obtener detalles de un pokémon específico
+#endpoint del poke específico
 @app.get("/api/pokemon/{pokemon_name}")
 def get_pokemon_detail(pokemon_name: str):
     url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}"
@@ -38,12 +37,12 @@ def get_pokemon_detail(pokemon_name: str):
         raise HTTPException(status_code=404, detail="Pokémon no encontrado")
     return response.json()
 
-# Endpoint para listar favoritos (API propia)
+#end del apipropia
 @app.get("/api/favorites/", response_model=list[FavoritePokemon])
 def list_favorites(db: Session = Depends(get_db)):
     return db.query(FavoritePokemon).all()
 
-# Endpoint para crear un favorito (API propia)
+#crear fav
 @app.post("/api/favorites/", response_model=FavoritePokemon)
 def create_favorite(fav: FavoritePokemonCreate, db: Session = Depends(get_db)):
     db_fav = FavoritePokemon(**fav.dict())
