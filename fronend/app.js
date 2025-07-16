@@ -1,12 +1,12 @@
 const API_BASE = "http://localhost:8000/api";
 
-// Mostrar lista inicial de Pokémon de la PokeAPI
+//lista inicial
 async function loadPokeAPIList(query = "") {
     const listDiv = document.getElementById("pokeapi-list");
     listDiv.innerHTML = "Cargando...";
     let url = `${API_BASE}/pokemon/?limit=12`;
     if (query) {
-        // Buscar por nombre o ID
+        //buscar
         url = `${API_BASE}/pokemon/${query}`;
         try {
             const res = await fetch(url);
@@ -20,7 +20,9 @@ async function loadPokeAPIList(query = "") {
             return;
         }
     }
-    // Listado general
+
+
+    
     const res = await fetch(url);
     const data = await res.json();
     listDiv.innerHTML = "";
@@ -32,7 +34,7 @@ async function loadPokeAPIList(query = "") {
     }
 }
 
-// Renderiza una tarjeta de Pokémon de la PokeAPI
+//renderizar
 function renderPokeCard(poke) {
     const card = document.createElement("div");
     card.className = "pokemon-card";
@@ -46,7 +48,7 @@ function renderPokeCard(poke) {
     return card;
 }
 
-// Mostrar lista de favoritos propios
+//favs
 async function loadFavorites() {
     const favDiv = document.getElementById("favorites-list");
     favDiv.innerHTML = "Cargando...";
@@ -62,7 +64,7 @@ async function loadFavorites() {
     }
 }
 
-// Renderiza una tarjeta de Pokémon favorito propio
+//rende los favs
 function renderFavoriteCard(fav) {
     const card = document.createElement("div");
     card.className = "favorite-card";
@@ -76,14 +78,15 @@ function renderFavoriteCard(fav) {
     return card;
 }
 
-// Manejar búsqueda en la PokeAPI
+//busqueda
 document.getElementById("search-form").addEventListener("submit", e => {
     e.preventDefault();
     const query = document.getElementById("search-input").value.trim().toLowerCase();
     loadPokeAPIList(query);
 });
 
-// Manejar formulario de favoritos
+
+
 document.getElementById("favorite-form").addEventListener("submit", async e => {
     e.preventDefault();
     const name = document.getElementById("fav-name").value.trim();
@@ -98,14 +101,14 @@ document.getElementById("favorite-form").addEventListener("submit", async e => {
         body: JSON.stringify(body)
     });
     if (res.ok) {
-        alert("¡Favorito agregado!");
+        alert("Favorito agregado!");
         loadFavorites();
         e.target.reset();
     } else {
-        alert("Error al guardar favorito.");
+        alert("Error");
     }
 });
 
-// Inicializar
+
 loadPokeAPIList();
 loadFavorites();
